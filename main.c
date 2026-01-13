@@ -135,12 +135,12 @@ int main(void) {
         if (IsKeyDown(KEY_W)) params.m += 0.1f;
         if (IsKeyDown(KEY_S)) params.m -= 0.1f;
 
-        if (params.k < 1.0f) params.k = 1.0f;
+        if (params.k < 1.0f) params.k = 0.0f;
         if (params.c < 0.0f) params.c = 0.0f;
-        if (params.m < 0.5f) params.m = 0.5f;
+        if (params.m < 0.5f) params.m = 0.0f;
 
         //2. FÍSICA
-        for(int i=0; i<4; i++) estado = PasoRK4(estado, params, 0.1f);
+        for(int i=0; i<4; i++) estado = PasoRK4(estado, params, 0.005f);
         for (int i = 0; i < HISTORY_LEN - 1; i++) historial[i] = historial[i+1];
         historial[HISTORY_LEN - 1] = estado.y;
 
